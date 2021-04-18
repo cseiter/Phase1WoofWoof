@@ -63,7 +63,9 @@ function createDetails(indDog) {
     dogInfoButton = document.createElement('button');
     dogInfoImage.src = indDog.image;
     dogInfoH2.innerText = indDog.name;
-    dogInfoButton.innerText = indDog.isGoodDog;
+    if (indDog.isGoodDog)
+        {dogInfoButton.innerText = "Good Dog!"}
+    else {dogInfoButton.innerText = "Bad Dog!"};
     dogInfo.append(dogInfoImage,dogInfoH2,dogInfoButton);
 }
 
