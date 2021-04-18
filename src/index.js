@@ -43,7 +43,21 @@ function clickDogButton(e) {
     if(e.target.innerText.includes("Good"))
         {dogUpdate = false}
         else {dogUpdate = true}
-    console.log(dogUpdate)
+    updateSingleDog(e.target.id, dogUpdate)
+}
+
+function updateSingleDog(dogId, dogUpdate) {
+    const options = {
+        method: "PATCH",
+        headers: {
+                "content-type": "application/json"
+        },
+        body: JSON.stringify({
+            isGoodDog: dogUpdate
+        })
+    }
+    return fetch(builtURL + `/${dogId}`, options)
+        .then(r => r.json())
 }
 
 function createSpan(DogArray) {
@@ -68,6 +82,7 @@ function createDetails(indDog) {
     const dogInfoImage = document.createElement('img'),
     dogInfoH2 = document.createElement('h2'),
     dogInfoButton = document.createElement('button');
+    dogInfoButton.id = indDog.id;
     dogInfoButton.addEventListener("click",clickDogButton);
     dogInfoImage.src = indDog.image;
     dogInfoH2.innerText = indDog.name;
