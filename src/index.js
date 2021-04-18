@@ -52,11 +52,19 @@ function createSpan(DogArray) {
 
 function clickDogSpan(e) {
     getSingleDog(e.target.id)
-    .then(console.log)
+    .then(createDetails)
 }
 
-getAllDogs().then(console.log);
-
-getSingleDog(3).then(console.log);
+function createDetails(indDog) {
+    const dogInfo = document.getElementById('dog-info');
+    dogInfo.innerHTML = ""
+    const dogInfoImage = document.createElement('img'),
+    dogInfoH2 = document.createElement('h2'),
+    dogInfoButton = document.createElement('button');
+    dogInfoImage.src = indDog.image;
+    dogInfoH2.innerText = indDog.name;
+    dogInfoButton.innerText = indDog.isGoodDog;
+    dogInfo.append(dogInfoImage);
+}
 
 getAllDogs().then(createSpan);
