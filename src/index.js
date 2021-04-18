@@ -64,7 +64,7 @@ function createDetails(indDog) {
     dogInfoImage.src = indDog.image;
     dogInfoH2.innerText = indDog.name;
     dogInfoButton.innerText = indDog.isGoodDog;
-    dogInfo.append(dogInfoImage);
+    dogInfo.append(dogInfoImage,dogInfoH2,dogInfoButton);
 }
 
 getAllDogs().then(createSpan);
