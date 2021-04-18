@@ -39,6 +39,13 @@ function getSingleDog(dogId) {
     .then (r => r.json())
 }
 
+function clickDogButton(e) {
+    if(e.target.innerText.includes("Good"))
+        {dogUpdate = false}
+        else {dogUpdate = true}
+    console.log(dogUpdate)
+}
+
 function createSpan(DogArray) {
     const dogBar = document.getElementById('dog-bar')
     DogArray.forEach(dogObj => {
@@ -61,6 +68,7 @@ function createDetails(indDog) {
     const dogInfoImage = document.createElement('img'),
     dogInfoH2 = document.createElement('h2'),
     dogInfoButton = document.createElement('button');
+    dogInfoButton.addEventListener("click",clickDogButton);
     dogInfoImage.src = indDog.image;
     dogInfoH2.innerText = indDog.name;
     if (indDog.isGoodDog)
