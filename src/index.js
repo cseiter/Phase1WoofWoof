@@ -43,7 +43,7 @@ function clickDogButton(e) {
     if(e.target.innerText.includes("Good"))
         {dogUpdate = false}
         else {dogUpdate = true}
-    updateSingleDog(e.target.id, dogUpdate)
+    updateSingleDog(e.target.id, dogUpdate).then(createDetails)
 }
 
 function updateSingleDog(dogId, dogUpdate) {
