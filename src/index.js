@@ -39,15 +39,19 @@ function getSingleDog(dogId) {
     .then (r => r.json())
 }
 
-function createSpan(testDog) {
+function createSpan(testDogArray) {
     const dogBar = document.getElementById('dog-bar')
-    const dogSpan = document.createElement('span')
-    dogSpan.innerText = testDog.name
-    dogBar.append(dogSpan)
+    
+    testDogArray.forEach(dogObj => {
+        const dogSpan = document.createElement('span')
+        dogSpan.innerText = dogObj.name
+        dogBar.append(dogSpan)
+    });
+
 }
 
 getAllDogs().then(console.log);
 
 getSingleDog(3).then(console.log);
 
-createSpan(testDog);
+createSpan(testDogArray);
