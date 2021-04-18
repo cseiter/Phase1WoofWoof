@@ -44,13 +44,15 @@ function createSpan(DogArray) {
     DogArray.forEach(dogObj => {
         const dogSpan = document.createElement('span')
         dogSpan.innerText = dogObj.name
+        dogSpan.id = dogObj.id
         dogSpan.addEventListener("click", clickDogSpan)
         dogBar.append(dogSpan)
     });
 }
 
-function clickDogSpan(dogId) {
-    alert(event.target.innerText);
+function clickDogSpan(e) {
+    getSingleDog(e.target.id)
+    .then(console.log)
 }
 
 getAllDogs().then(console.log);
